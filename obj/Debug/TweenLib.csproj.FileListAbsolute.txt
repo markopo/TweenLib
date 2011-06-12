@@ -1,0 +1,5 @@
+c:\users\markolinda\documents\visual studio 2010\Projects\AnimStackPanel\TweenLib\Bin\Debug\TweenLib.dll
+c:\users\markolinda\documents\visual studio 2010\Projects\AnimStackPanel\TweenLib\Bin\Debug\TweenLib.pdb
+c:\users\markolinda\documents\visual studio 2010\Projects\AnimStackPanel\TweenLib\obj\Debug\ResolveAssemblyReference.cache
+c:\users\markolinda\documents\visual studio 2010\Projects\AnimStackPanel\TweenLib\obj\Debug\TweenLib.dll
+c:\users\markolinda\documents\visual studio 2010\Projects\AnimStackPanel\TweenLib\obj\Debug\TweenLib.pdb
