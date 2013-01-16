@@ -22,6 +22,17 @@ namespace TweenLib
         }
 
 
+        public double DegreesToRadians(double degrees)
+        {
+            return degrees * Math.PI / 180; 
+        }
+
+        public double RadiansToDegrees(double radians)
+        {
+            return radians * 180 / Math.PI; 
+        }
+
+
         public static void ToggleFade(UIElement ui, double seconds, Grid LayoutRoot)
         {
             Grid root = LayoutRoot; 
@@ -60,6 +71,16 @@ namespace TweenLib
             //root.Resources.Add(canvasid, canvasid);
             DoubleAnimation da1 = new DoubleAnimation();
             DoubleAnimation da2 = new DoubleAnimation();
+
+            //BounceEase bounce = new BounceEase();
+            //bounce.Bounciness = 4;
+            //da1.EasingFunction = bounce;
+            //da2.EasingFunction = bounce;
+
+            CubicEase cubic = new CubicEase();
+            da1.EasingFunction = cubic;
+            da2.EasingFunction = cubic; 
+
             Duration d = new Duration(TimeSpan.FromSeconds(seconds));
             da1.Duration = d;
             da2.Duration = d;
@@ -80,6 +101,47 @@ namespace TweenLib
 
 
         }
+        public static void Resize(UIElement ui, double seconds, double h, double w, Canvas canvas)
+        {
+            Canvas c = canvas;
+            if (!string.IsNullOrEmpty(sbid))
+            {
+                c.Resources.Remove(sbid);
+            }
 
+            //Canvas canvas = new Canvas();
+            //string canvasid = String.Format("canvas{0}", Guid.NewGuid().ToString().Replace("-", ""));
+            //root.Resources.Add(canvasid, canvasid);
+            DoubleAnimation da1 = new DoubleAnimation();
+            DoubleAnimation da2 = new DoubleAnimation();
+
+            //BounceEase bounce = new BounceEase();
+            //bounce.Bounciness = 4;
+            //da1.EasingFunction = bounce;
+            //da2.EasingFunction = bounce;
+
+            CubicEase cubic = new CubicEase();
+            da1.EasingFunction = cubic;
+            da2.EasingFunction = cubic;
+
+            Duration d = new Duration(TimeSpan.FromSeconds(seconds));
+            da1.Duration = d;
+            da2.Duration = d;
+            Storyboard sb = new Storyboard();
+            Storyboard.SetTarget(da1, ui);
+            Storyboard.SetTarget(da2, ui);
+            Storyboard.SetTargetProperty(da1, new PropertyPath("(Width)"));
+            Storyboard.SetTargetProperty(da2, new PropertyPath("(Height)"));
+            sb.Duration = d;
+            sb.Children.Add(da1);
+            sb.Children.Add(da2);
+            da1.To = w;
+            da2.To = h; 
+            sbid = Guid.NewGuid().ToString();
+            c.Resources.Add(sbid, sb);
+            sb.Begin(); 
+
+
+        }
     }
 }
